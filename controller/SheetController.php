@@ -7,7 +7,7 @@
  */
 class SheetController extends Controller
 {
-
+        
 	public function showAction($id = null)
 	{
 
@@ -106,6 +106,22 @@ class SheetController extends Controller
 		$sheet = $rep->getById($id);
 		$content = $this->getView()->render('simple.html.twig', array("sheet" => $sheet));
 		return new Response($content);
+	}
+        
+        public function addPermAction($id)
+	{
+                $permrepo = new PermissionRepository();
+                $perm = new Permission(16, 7, 1);
+                $permrepo->addPermission($perm);
+                exit;
+	}
+        
+        public function removePermAction($id)
+	{
+                $permrepo = new PermissionRepository();
+                $perm = new Permission(16, 7, 1);
+                $permrepo->removePermission($perm);
+                exit;
 	}
 
 }
